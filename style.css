@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#hero {
+  background-color: #0a192f;
+  color: white;
+  padding: 100px 20px;
+}
+
+#hero h1 span {
+  color: #00adb5;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #00adb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+section h2 {
+  margin-bottom: 20px;
+  color: #00adb5;
+}
+
+#services ul {
+  list-style: none;
+  padding: 0;
+}
+
+#services li {
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #00adb5;
+  font-size: 1.5rem;
+}
+
+footer {
+  background-color: #0a192f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
