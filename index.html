@@ -59,43 +59,5 @@
     <p>&copy; 2025 Poojari. All rights reserved.</p>
   </footer>
 
-  <script>
-
-    var animateButton = function(e) {
-
-      e.preventDefault;
-      //reset animation
-      e.target.classList.remove('animate');
-      
-      e.target.classList.add('animate');
-      setTimeout(function(){
-        e.target.classList.remove('animate');
-      },700);
-    };
-    
-    var bubblyButtons = document.getElementsByClassName("bubbly-button");
-    
-    for (var i = 0; i < bubblyButtons.length; i++) {
-      bubblyButtons[i].addEventListener('click', animateButton, false);
-    }
-    
-    document.getElementById("contact-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbwEx_xFp5dy5fxaUpqBfD24zHFR8hukOaTrDhYLCWaSL9Kr0EeFs5lP9AqYiXrWWo00ug/exec", {
-          method: "POST",
-          body: formData
-        });
-        alert("Thank you! Your message has been sent.");
-        this.reset();
-      } catch (error) {
-        alert("Oops! Something went wrong.");
-        console.error(error);
-      }
-    });
-  </script>
-
 </body>
 </html>
