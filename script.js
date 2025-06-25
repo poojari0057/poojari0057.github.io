@@ -9,6 +9,8 @@ form.addEventListener("submit", async function (e) {
   button.textContent = "Sending...";
 
   const formData = new FormData(form);
+  formData.append("deviceType", /Mobile/i.test(navigator.userAgent) ? "Mobile" : "Desktop");
+
 
   try {
     const response = await fetch(
