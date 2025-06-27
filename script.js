@@ -1,37 +1,65 @@
-const form = document.getElementById("contact-form");
-const button = form.querySelector("button");
 
-form.addEventListener("submit", async function (e) {
+
+
+const form = document.querySelector("#contact-form");
+const formInputs = document.querySelectorAll("[data-form-input]");
+const formBtn = document.querySelector("[data-form-btn]");
+const formBtnText = formBtn.querySelector("span");
+
+// Your Google Apps Script deployment URL
+const scriptURL = "https://script.google.com/macros/s/AKfycbwqGgqMeSPTVPQ_e0UW8HXlRNfGvQCso5jMunsJj6t4Hv315EsDrSBWIHqRbYcsTuB0wQ/exec";
+
+// Enable/disable submit button
+formInputs.forEach(input => {
+  input.addEventListener("input", () => {
+    formBtn.disabled = !form.checkValidity();
+  });
+});
+
+// Device detection
+function getDeviceType() {
+  return /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+}
+
+// Submit handler
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  button.disabled = true;
-  const originalText = button.textContent;
-  button.textContent = "Sending...";
+  // UI feedback
+  formBtn.disabled = true;
+  const originalText = formBtnText.textContent;
+  formBtnText.textContent = "Sending...";
 
-  const formData = new FormData(form);
-  formData.append("deviceType", /Mobile/i.test(navigator.userAgent) ? "Mobile" : "Desktop");
-
+  // Prepare data
+  const formData = {
+    fullname: form.fullname.value,
+    email: form.email.value,
+    message: form.message.value,
+    deviceType: getDeviceType()
+  };
 
   try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbwqGgqMeSPTVPQ_e0UW8HXlRNfGvQCso5jMunsJj6t4Hv315EsDrSBWIHqRbYcsTuB0wQ/exec",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" }
+    });
 
-    if (response.ok) {
-      alert("Thank you! Your message has been sent.");
+    const result = await res.json();
+
+    if (result.status === "success") {
+      alert("Message sent successfully!");
       form.reset();
+      formBtn.disabled = true;
     } else {
-      alert("Failed to send. Please try again later.");
+      alert("Something went wrong. Please try again.");
     }
-  } catch (error) {
-    alert("Oops! Something went wrong.");
-    console.error(error);
+
+  } catch (err) {
+    console.error("Error:", err);
+    alert("An error occurred while sending the message.");
   } finally {
-    button.disabled = false;
-    button.textContent = originalText;
+    formBtnText.textContent = originalText;
   }
 });
+
