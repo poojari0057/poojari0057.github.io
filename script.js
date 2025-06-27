@@ -7,7 +7,7 @@ const formBtn = document.querySelector("[data-form-btn]");
 const formBtnText = formBtn.querySelector("span");
 
 // Your Google Apps Script deployment URL
-const scriptURL = "https://script.google.com/macros/s/AKfycbwqGgqMeSPTVPQ_e0UW8HXlRNfGvQCso5jMunsJj6t4Hv315EsDrSBWIHqRbYcsTuB0wQ/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzHITq_P1evXm9iWR-sbEEOFbzSwvYaHVACSKDGsezyQVRP2ogiQDhsKa-VZnhrcqc3Mw/exec";
 
 // Enable/disable submit button
 formInputs.forEach(input => {
