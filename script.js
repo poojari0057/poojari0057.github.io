@@ -32,7 +32,7 @@ form.addEventListener("submit", async (e) => {
 
   // Prepare data
   const formData = {
-    fullname: form.fullname.value,
+    name: form.name.value,
     email: form.email.value,
     message: form.message.value,
     deviceType: getDeviceType()
