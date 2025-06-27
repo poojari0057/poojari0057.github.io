@@ -42,17 +42,20 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+ <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+            <form id="contact-form" class="form" data-form>
+              <div class="input-wrapper">
+                <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input/>
+                <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input/>
+              </div>
+              <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+              <button class="form-btn" type="submit" data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
 
   <!-- Footer -->
   <footer>
